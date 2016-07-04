@@ -11,11 +11,9 @@ class GraphicsCommand
 {
 public:
     virtual ~GraphicsCommand() = 0 {}
-    GraphicsCommand() {}
-    GraphicsCommand(GraphicsScene& scene, QGraphicsItem* graphics_item) {}
 
-    virtual void Do() {};
-    virtual void UnDo() {};
+    virtual void Do() = 0 {};
+    virtual void UnDo() = 0 {};
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

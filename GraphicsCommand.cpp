@@ -12,6 +12,7 @@ AddLineCommand::AddLineCommand(GraphicsScene& scene, QGraphicsItem* graphics_ite
     : m_scene(scene)
     , m_graphics_item(graphics_item)
 {
+    Do();
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 

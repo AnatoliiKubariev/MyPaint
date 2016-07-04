@@ -59,10 +59,10 @@
     <ClCompile Include="GraphicsScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicState.cpp">
+    <ClCompile Include="GraphicsCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsCommand.cpp">
+    <ClCompile Include="GraphicsState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -88,7 +88,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsCommand.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

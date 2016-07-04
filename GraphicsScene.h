@@ -17,6 +17,7 @@ public:
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent* mouse_event) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent* mouse_event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* mouse_event) override;
 
 private:

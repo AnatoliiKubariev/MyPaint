@@ -169,7 +169,7 @@
     </ClCompile>
     <ClCompile Include="GraphicsCommand.cpp" />
     <ClCompile Include="GraphicsScene.cpp" />
-    <ClCompile Include="GraphicState.cpp" />
+    <ClCompile Include="GraphicsState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPaint.cpp" />
   </ItemGroup>
