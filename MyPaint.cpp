@@ -7,34 +7,16 @@ MyPaint::MyPaint(QWidget* parent)
 
     m_ui.m_graphics_view->setScene(&m_scene);
 
-    connect(m_ui.m_color_push_button)
+    connect(m_ui.m_color_push_button, &QPushButton::pressed, this, &MyPaint::SetColor);
 
     InitializeUndoRedo();
 
-    InitializeColorsBox();
-    connect(m_ui.m_colors_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-            this, &MyPaint::SetColor);
     InitializeBrushBox();
     connect(m_ui.m_brush_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
             this, &MyPaint::SetBrush);
     InitializeWidthBox();
     connect(m_ui.m_width_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
             this, &MyPaint::SetWidth);
-}
-
-
-void MyPaint::InitializeColorsBox()
-{
-    QStringList color_names = QColor::colorNames();
-
-    for(auto i = 0; i < color_names.size(); ++i)
-    {
-        QColor color(color_names[i]);
-
-        m_ui.m_colors_combo_box->insertItem(i, color_names[i]);
-        m_ui.m_colors_combo_box->setItemData(i, color, Qt::DecorationRole);
-    }
-    m_ui.m_colors_combo_box->setCurrentText("black");
 }
 
 void MyPaint::InitializeBrushBox()
@@ -70,9 +52,10 @@ void MyPaint::InitializeUndoRedo()
     addAction(redo_action);
 }
 
-void MyPaint::SetColor(const QString& color_name)
+void MyPaint::SetColor()
 {
-    m_scene.SetItemColor(QColor(color_name));
+    QColorDialog color_dialog;
+    m_scene.SetItemColor(color_dialog.getColor());
 }
 
 void MyPaint::SetBrush(const QString& brush_name)

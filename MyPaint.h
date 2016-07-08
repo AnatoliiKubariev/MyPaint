@@ -14,11 +14,10 @@ public:
     MyPaint(QWidget *parent = 0);
 
 private:
-    void InitializeColorsBox();
     void InitializeBrushBox();
     void InitializeWidthBox();
     void InitializeUndoRedo();
-    void SetColor(const QString& color_name);
+    void SetColor();
     void SetBrush(const QString& brush_name);
     void SetWidth(const QString& width);
 
