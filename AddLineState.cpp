@@ -38,6 +38,10 @@ void AddLineState::MouseMoveEvent(const QGraphicsSceneMouseEvent* mouse_event) /
 
 void AddLineState::MouseReleaseEvent(const QGraphicsSceneMouseEvent* mouse_event)
 {
+    if(!m_graphics_line)
+    {
+        return;
+    }
     std::unique_ptr<GraphicsCommand> temp_line_command = std::make_unique<AddLineCommand>(m_scene, std::move(m_graphics_line));
     m_commands.Register(std::move(temp_line_command));
 }

@@ -7,24 +7,19 @@ MyPaint::MyPaint(QWidget* parent)
 
     m_ui.m_graphics_view->setScene(&m_scene);
 
-    QAction* undo_action = new QAction(this);
-    undo_action->setShortcut(QKeySequence::Undo);
-    connect(undo_action, &QAction::triggered, &m_scene, &GraphicsScene::UnDo);
-    addAction(undo_action);
-    QAction* redo_action = new QAction(this);
-    redo_action->setShortcut(QKeySequence::Redo);
-    connect(redo_action, &QAction::triggered, &m_scene, &GraphicsScene::ReDo);
-    addAction(redo_action);
+    connect(m_ui.m_color_push_button)
+
+    InitializeUndoRedo();
 
     InitializeColorsBox();
     connect(m_ui.m_colors_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-            &m_scene, &GraphicsScene::SetItemColor);
-    InitializeWidthBox();
-    connect(m_ui.m_width_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-            &m_scene, &GraphicsScene::SetItemWidth);
+            this, &MyPaint::SetColor);
     InitializeBrushBox();
     connect(m_ui.m_brush_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
-            &m_scene, &GraphicsScene::SetItemBrush);
+            this, &MyPaint::SetBrush);
+    InitializeWidthBox();
+    connect(m_ui.m_width_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
+            this, &MyPaint::SetWidth);
 }
 
 
@@ -49,7 +44,7 @@ void MyPaint::InitializeBrushBox()
     {
         m_ui.m_brush_combo_box->insertItem(i, QString::number(i));
     }
-    m_ui.m_width_combo_box->setCurrentIndex(brush_numbers[0]); //NoPen
+    m_ui.m_brush_combo_box->setCurrentText(QString::number(brush_numbers[0])); //NoPen
 }
 
 void MyPaint::InitializeWidthBox()
@@ -60,5 +55,32 @@ void MyPaint::InitializeWidthBox()
     {
         m_ui.m_width_combo_box->insertItem(i, QString::number(i));
     }
-    m_ui.m_width_combo_box->setCurrentIndex(min_width);
+    m_ui.m_width_combo_box->setCurrentText(QString::number(min_width));
+}
+
+void MyPaint::InitializeUndoRedo()
+{
+    QAction* undo_action = new QAction(this);
+    undo_action->setShortcut(QKeySequence::Undo);
+    connect(undo_action, &QAction::triggered, &m_scene, &GraphicsScene::UnDo);
+    addAction(undo_action);
+    QAction* redo_action = new QAction(this);
+    redo_action->setShortcut(QKeySequence::Redo);
+    connect(redo_action, &QAction::triggered, &m_scene, &GraphicsScene::ReDo);
+    addAction(redo_action);
+}
+
+void MyPaint::SetColor(const QString& color_name)
+{
+    m_scene.SetItemColor(QColor(color_name));
+}
+
+void MyPaint::SetBrush(const QString& brush_name)
+{
+    m_scene.SetItemBrush(Qt::PenStyle(brush_name.toInt()));
+}
+
+void MyPaint::SetWidth(const QString& width)
+{
+    m_scene.SetItemWidth(width.toInt());
 }

@@ -7,19 +7,19 @@ GraphicsScene::GraphicsScene(QObject* parent)
     m_state.reset(new AddLineState(m_commands, m_item_pen, *this));
 }
 
-void GraphicsScene::SetItemColor(const QString& color_name)
+void GraphicsScene::SetItemColor(const QColor& color)
 {
-    m_item_pen.setColor(QColor(color_name));
+    m_item_pen.setColor(color);
 }
 
-void GraphicsScene::SetItemBrush(const QString& style_value)
+void GraphicsScene::SetItemBrush(const Qt::PenStyle& style)
 {
-    m_item_pen.setStyle(Qt::PenStyle(style_value.toInt()));
+    m_item_pen.setStyle(style);
 }
 
-void GraphicsScene::SetItemWidth(const QString& width)
+void GraphicsScene::SetItemWidth(const int width)
 {
-    m_item_pen.setWidth(width.toInt());
+    m_item_pen.setWidth(width);
 }
 
 void GraphicsScene::ReDo()

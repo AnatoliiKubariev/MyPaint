@@ -25,5 +25,5 @@ void AddLineCommand::ReDo()
 void AddLineCommand::UnDo()
 {
     m_scene.removeItem(m_graphics_line.get()); //
-    m_graphics_line.release();
+    m_graphics_line.reset();
 }

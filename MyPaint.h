@@ -17,6 +17,11 @@ private:
     void InitializeColorsBox();
     void InitializeBrushBox();
     void InitializeWidthBox();
+    void InitializeUndoRedo();
+    void SetColor(const QString& color_name);
+    void SetBrush(const QString& brush_name);
+    void SetWidth(const QString& width);
+
 
     Ui::MyPaintClass m_ui;
 

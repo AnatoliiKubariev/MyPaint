@@ -16,9 +16,9 @@ class GraphicsScene: public QGraphicsScene
 public:
     GraphicsScene(QObject* parent = 0);
 
-    void SetItemColor(const QString& color_name);
-    void SetItemBrush(const QString& style_value);
-    void SetItemWidth(const QString& width);
+    void SetItemColor(const QColor& color);
+    void SetItemBrush(const Qt::PenStyle& style);
+    void SetItemWidth(const int width);
 
     void ReDo();
     void UnDo();
