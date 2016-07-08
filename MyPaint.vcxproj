@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="UndoRedoStack.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_GraphicsScene.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -157,9 +158,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GraphicsCommand.cpp" />
+    <ClCompile Include="AddLineCommand.cpp" />
     <ClCompile Include="GraphicsScene.cpp" />
-    <ClCompile Include="GraphicsState.cpp" />
+    <ClCompile Include="AddLineState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPaint.cpp" />
   </ItemGroup>
@@ -204,6 +205,9 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddLineCommand.h" />
+    <ClInclude Include="AddLineState.h" />
+    <ClInclude Include="UndoRedoStack.h" />
     <ClInclude Include="GraphicsCommand.h" />
     <ClInclude Include="GraphicsState.h" />
     <CustomBuild Include="GraphicsScene.h">

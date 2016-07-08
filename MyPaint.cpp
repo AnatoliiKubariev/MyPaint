@@ -7,14 +7,23 @@ MyPaint::MyPaint(QWidget* parent)
 
     m_ui.m_graphics_view->setScene(&m_scene);
 
+    QAction* undo_action = new QAction(this);
+    undo_action->setShortcut(QKeySequence::Undo);
+    connect(undo_action, &QAction::triggered, &m_scene, &GraphicsScene::UnDo);
+    addAction(undo_action);
+    QAction* redo_action = new QAction(this);
+    redo_action->setShortcut(QKeySequence::Redo);
+    connect(redo_action, &QAction::triggered, &m_scene, &GraphicsScene::ReDo);
+    addAction(redo_action);
+
     InitializeColorsBox();
     connect(m_ui.m_colors_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
             &m_scene, &GraphicsScene::SetItemColor);
     InitializeWidthBox();
-    connect(m_ui.m_width_combo_box, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+    connect(m_ui.m_width_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
             &m_scene, &GraphicsScene::SetItemWidth);
     InitializeBrushBox();
-    connect(m_ui.m_brush_combo_box, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+    connect(m_ui.m_brush_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
             &m_scene, &GraphicsScene::SetItemBrush);
 }
 
