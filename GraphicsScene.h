@@ -14,7 +14,11 @@ class GraphicsScene: public QGraphicsScene
     Q_OBJECT
 
 public:
+    enum class Mode {DrawLine, DrawRectangle, DrawEllipse};
+
     GraphicsScene(QObject* parent = 0);
+
+    void SetMode(const Mode& mode);
 
     void SetItemColor(const QColor& color);
     void SetItemBrush(const Qt::PenStyle& style);
@@ -27,7 +31,6 @@ private:
     void mousePressEvent(QGraphicsSceneMouseEvent* mouse_event) override;
     void mouseMoveEvent(QGraphicsSceneMouseEvent* mouse_event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent* mouse_event) override;
-    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* mouse_event) override {}
 
     std::unique_ptr<GraphicState> m_state;
     UndoRedoStack m_commands;

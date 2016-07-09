@@ -7,7 +7,7 @@ class QGraphicsSceneMouseEvent;
 class GraphicState
 {
 public:
-    virtual ~GraphicState() = 0 {};
+    virtual ~GraphicState() {};
 
     virtual void MousePressEvent(const QGraphicsSceneMouseEvent* mouse_event) {}
     virtual void MouseMoveEvent(const QGraphicsSceneMouseEvent* mouse_event) {}

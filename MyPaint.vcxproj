@@ -141,6 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddEllipseCommand.cpp" />
+    <ClCompile Include="AddEllipseState.cpp" />
     <ClCompile Include="AddRectangleCommand.cpp" />
     <ClCompile Include="AddRectangleState.cpp" />
     <ClCompile Include="UndoRedoStack.cpp" />
@@ -165,6 +167,7 @@
     <ClCompile Include="AddLineState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPaint.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="MyPaint.h">
@@ -207,6 +210,8 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddEllipseCommand.h" />
+    <ClInclude Include="AddEllipseState.h" />
     <ClInclude Include="AddLineCommand.h" />
     <ClInclude Include="AddLineState.h" />
     <ClInclude Include="AddRectangleCommand.h" />
@@ -214,6 +219,7 @@
     <ClInclude Include="UndoRedoStack.h" />
     <ClInclude Include="GraphicsCommand.h" />
     <ClInclude Include="GraphicsState.h" />
+    <ClInclude Include="Utils.h" />
     <CustomBuild Include="GraphicsScene.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing GraphicsScene.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>

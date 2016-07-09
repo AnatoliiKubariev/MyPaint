@@ -1,11 +1,29 @@
 #include "GraphicsScene.h"
+#include "GraphicsState.h"
 #include "AddLineState.h"
+#include "AddEllipseState.h"
 #include "AddRectangleState.h"
 
 GraphicsScene::GraphicsScene(QObject* parent)
     : QGraphicsScene(parent)
+    , m_state(new GraphicState)
 {
-    m_state.reset(new AddRectangleState(m_commands, m_item_pen, *this));
+}
+
+void GraphicsScene::SetMode(const Mode& mode)
+{
+    if(mode == Mode::DrawLine)
+    {
+        m_state.reset(new AddLineState(m_commands, m_item_pen, *this));
+    }
+    else if(mode == Mode::DrawRectangle)
+    {
+        m_state.reset(new AddRectangleState(m_commands, m_item_pen, *this));
+    }
+    else if(mode == Mode::DrawEllipse)
+    {
+        m_state.reset(new AddEllipseState(m_commands, m_item_pen, *this));
+    }
 }
 
 void GraphicsScene::SetItemColor(const QColor& color)

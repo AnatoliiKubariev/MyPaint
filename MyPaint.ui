@@ -15,47 +15,38 @@
   </property>
   <widget class="QWidget" name="m_centra_widget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="m_color_layout">
-      <item>
-       <widget class="QPushButton" name="m_color_push_button">
-        <property name="text">
-         <string>Color</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+    <item row="0" column="3">
+     <widget class="QComboBox" name="m_brush_combo_box"/>
     </item>
-    <item row="0" column="1">
-     <layout class="QHBoxLayout" name="m_brush_layout">
-      <item>
-       <widget class="QLabel" name="m_brush_label">
-        <property name="text">
-         <string>Brush</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="m_brush_combo_box"/>
-      </item>
-     </layout>
+    <item row="0" column="4">
+     <widget class="QLabel" name="m_width_label">
+      <property name="text">
+       <string>Width: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QComboBox" name="m_width_combo_box"/>
+    </item>
+    <item row="1" column="0" colspan="4">
+     <widget class="QGraphicsView" name="m_graphics_view"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="m_primitive_label">
+      <property name="text">
+       <string>Primitive:</string>
+      </property>
+     </widget>
     </item>
     <item row="0" column="2">
-     <layout class="QHBoxLayout" name="m_widht_ayout">
-      <item>
-       <widget class="QLabel" name="m_width_label">
-        <property name="text">
-         <string>Width</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="m_width_combo_box"/>
-      </item>
-     </layout>
+     <widget class="QLabel" name="m_brush_label">
+      <property name="text">
+       <string>Brush: </string>
+      </property>
+     </widget>
     </item>
-    <item row="1" column="0" colspan="3">
-     <widget class="QGraphicsView" name="m_graphics_view"/>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="m_primitive_combo_box"/>
     </item>
    </layout>
   </widget>
