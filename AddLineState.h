@@ -14,7 +14,7 @@ class GraphicsScene;
 class AddLineState: public GraphicState
 {
 public:
-    ~AddLineState() {}
+    ~AddLineState();
     AddLineState(UndoRedoStack& commands,
                  QPen& pen,
                  GraphicsScene& scene);

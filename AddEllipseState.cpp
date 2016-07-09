@@ -7,6 +7,10 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPen>
 
+AddEllipseState::~AddEllipseState()
+{
+}
+
 AddEllipseState::AddEllipseState(UndoRedoStack& commands,
                                  QPen& pen,
                                  GraphicsScene& scene)
@@ -43,6 +47,6 @@ void AddEllipseState::MouseReleaseEvent(const QGraphicsSceneMouseEvent* mouse_ev
     {
         return;
     }
-    auto temp_rectangle_command = std::make_unique<AddEllipseCommand>(m_scene, std::move(m_graphics_ellipse));
+    auto temp_rectangle_command = std::make_unique<AddEllipseCommand>(m_scene, m_graphics_ellipse.release());
     m_commands.Register(std::move(temp_rectangle_command));
 }

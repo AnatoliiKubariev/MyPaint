@@ -6,6 +6,10 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPen>
 
+AddLineState::~AddLineState()
+{
+}
+
 AddLineState::AddLineState(UndoRedoStack& commands,
                            QPen& pen,
                            GraphicsScene& scene)
@@ -42,6 +46,6 @@ void AddLineState::MouseReleaseEvent(const QGraphicsSceneMouseEvent* mouse_event
     {
         return;
     }
-    auto temp_line_command = std::make_unique<AddLineCommand>(m_scene, std::move(m_graphics_line));
+    auto temp_line_command = std::make_unique<AddLineCommand>(m_scene, m_graphics_line.release());
     m_commands.Register(std::move(temp_line_command));
 }

@@ -12,6 +12,8 @@ public:
     void ReDo();
     void UnDo();
 
+    void Clear();
+
 private:
     std::vector<std::unique_ptr<GraphicsCommand>> m_commands;
     int m_top = 0;

@@ -7,6 +7,10 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPen>
 
+AddRectangleState::~AddRectangleState()
+{
+}
+
 AddRectangleState::AddRectangleState(UndoRedoStack& commands,
                                      QPen& pen,
                                      GraphicsScene& scene)
@@ -43,6 +47,6 @@ void AddRectangleState::MouseReleaseEvent(const QGraphicsSceneMouseEvent* mouse_
     {
         return;
     }
-    auto temp_rectangle_command = std::make_unique<AddRectangleCommand>(m_scene, std::move(m_graphics_rectangle));
+    auto temp_rectangle_command = std::make_unique<AddRectangleCommand>(m_scene, m_graphics_rectangle.release());
     m_commands.Register(std::move(temp_rectangle_command));
 }

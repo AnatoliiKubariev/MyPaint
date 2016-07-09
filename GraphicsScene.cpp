@@ -8,6 +8,7 @@ GraphicsScene::GraphicsScene(QObject* parent)
     : QGraphicsScene(parent)
     , m_state(new GraphicState)
 {
+    setBackgroundBrush(QBrush(Qt::white));
 }
 
 void GraphicsScene::SetMode(const Mode& mode)
@@ -64,4 +65,10 @@ void GraphicsScene::mouseMoveEvent(QGraphicsSceneMouseEvent* mouse_event)
 void GraphicsScene::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouse_event)
 {
     m_state->MouseReleaseEvent(mouse_event);
+}
+
+void GraphicsScene::Clear()
+{
+    this->clear();
+    m_commands.Clear();
 }

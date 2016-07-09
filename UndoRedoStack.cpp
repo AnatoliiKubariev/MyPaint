@@ -29,3 +29,9 @@ void UndoRedoStack::UnDo()
     m_commands[m_top]->UnDo();
     --m_top;
 }
+
+void UndoRedoStack::Clear()
+{
+    m_commands.clear();
+    m_top = 0;
+}

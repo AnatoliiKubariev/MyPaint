@@ -1,5 +1,7 @@
 #include "MyPaint.h"
 
+#include <QFileDialog>
+
 MyPaint::MyPaint(QWidget* parent)
     : QMainWindow(parent)
 {
@@ -13,6 +15,8 @@ MyPaint::MyPaint(QWidget* parent)
             this, &MyPaint::SetBrush);
     connect(m_ui.m_width_combo_box, static_cast<void (QComboBox::*)(const QString&)>(&QComboBox::currentIndexChanged),
             this, &MyPaint::SetWidth);
+    connect(m_ui.m_new_action, &QAction::triggered, this, &MyPaint::NewEvent);
+    connect(m_ui.m_save_action, &QAction::triggered, this, &MyPaint::SaveEvent);
 
     InitializePrimitiveBox();
     InitializeBrushBox();
@@ -111,4 +115,28 @@ void MyPaint::SetBrush(const QString& brush_name)
 void MyPaint::SetWidth(const QString& width)
 {
     m_scene.SetItemWidth(width.toInt());
+}
+
+void MyPaint::NewEvent()
+{
+    m_scene.Clear();
+}
+
+void MyPaint::SaveEvent()
+{
+    QFileDialog save_file_dialog;
+    save_file_dialog.setNameFilter("*.jpg");
+    save_file_dialog.setDefaultSuffix("jpg");
+    save_file_dialog.setAcceptMode(QFileDialog::AcceptSave);
+    save_file_dialog.exec();
+
+    if(!save_file_dialog.selectedFiles().empty())
+    {
+        m_scene.clearSelection();
+        m_scene.setSceneRect(m_scene.itemsBoundingRect());
+        QImage image(m_scene.sceneRect().width(), m_scene.sceneRect().height(), QImage::Format_ARGB32_Premultiplied);
+        QPainter painter(&image);
+        m_scene.render(&painter);
+        image.save(save_file_dialog.selectedFiles().front());
+    }
 }

@@ -14,7 +14,7 @@ class GraphicsScene;
 class AddEllipseState: public GraphicState
 {
 public:
-    ~AddEllipseState() {}
+    ~AddEllipseState();
     AddEllipseState(UndoRedoStack& commands,
                     QPen& pen,
                     GraphicsScene& scene);

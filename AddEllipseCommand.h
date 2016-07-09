@@ -12,8 +12,8 @@ class GraphicsScene;
 class AddEllipseCommand: public GraphicsCommand
 {
 public:
-    ~AddEllipseCommand() {}
-    AddEllipseCommand(GraphicsScene& scene, std::unique_ptr<QGraphicsEllipseItem> graphics_line);
+    ~AddEllipseCommand();
+    AddEllipseCommand(GraphicsScene& scene, QGraphicsEllipseItem* graphics_line);
 
     void ReDo() override;
     void UnDo() override;
@@ -23,5 +23,5 @@ private:
     QRectF m_rectangle;
     QPen m_pen;
 
-    std::unique_ptr<QGraphicsEllipseItem> m_graphics_ellipse;
+    QGraphicsEllipseItem* m_graphics_ellipse;
 };

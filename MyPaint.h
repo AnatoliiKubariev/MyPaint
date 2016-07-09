@@ -23,6 +23,9 @@ private:
     void SetColor();
     void SetBrush(const QString& brush_name);
     void SetWidth(const QString& width);
+    void NewEvent();
+    void OpenEvent();
+    void SaveEvent();
 
 
     Ui::MyPaintClass m_ui;
