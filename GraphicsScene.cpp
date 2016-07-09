@@ -1,10 +1,11 @@
 #include "GraphicsScene.h"
 #include "AddLineState.h"
+#include "AddRectangleState.h"
 
 GraphicsScene::GraphicsScene(QObject* parent)
     : QGraphicsScene(parent)
 {
-    m_state.reset(new AddLineState(m_commands, m_item_pen, *this));
+    m_state.reset(new AddRectangleState(m_commands, m_item_pen, *this));
 }
 
 void GraphicsScene::SetItemColor(const QColor& color)

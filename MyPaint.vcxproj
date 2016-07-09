@@ -141,6 +141,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddRectangleCommand.cpp" />
+    <ClCompile Include="AddRectangleState.cpp" />
     <ClCompile Include="UndoRedoStack.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_GraphicsScene.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -207,6 +209,8 @@
   <ItemGroup>
     <ClInclude Include="AddLineCommand.h" />
     <ClInclude Include="AddLineState.h" />
+    <ClInclude Include="AddRectangleCommand.h" />
+    <ClInclude Include="AddRectangleState.h" />
     <ClInclude Include="UndoRedoStack.h" />
     <ClInclude Include="GraphicsCommand.h" />
     <ClInclude Include="GraphicsState.h" />

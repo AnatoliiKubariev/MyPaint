@@ -2,30 +2,30 @@
 
 void UndoRedoStack::Register(std::unique_ptr<GraphicsCommand> command)
 {
-    if(m_current_item > (m_commands.size() - 1))
+    if(m_top < (m_commands.size() - 1)) //resize stack by new top
     {
-        m_commands.resize(m_current_item + 1);
+        m_commands.resize(m_top + 1);
     }
     m_commands.push_back(std::move(command));
-    ++m_current_item;
+    ++m_top;
 }
 
 void UndoRedoStack::ReDo()
 {
-    if(m_current_item >= (static_cast<int>(m_commands.size()) - 1))
+    if(m_top >= (static_cast<int>(m_commands.size()) - 1)) //return if top - last element
     {
         return;
     }
-    ++m_current_item;
-    m_commands[m_current_item]->ReDo();
+    ++m_top;
+    m_commands[m_top]->ReDo();
 }
 
 void UndoRedoStack::UnDo()
 {
-    if(m_current_item < 0)
+    if(m_top == 0)
     {
         return;
     }
-    m_commands[m_current_item]->UnDo();
-    --m_current_item;
+    m_commands[m_top]->UnDo();
+    --m_top;
 }

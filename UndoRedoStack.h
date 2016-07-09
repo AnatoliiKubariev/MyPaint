@@ -14,5 +14,5 @@ public:
 
 private:
     std::vector<std::unique_ptr<GraphicsCommand>> m_commands;
-    int m_current_item = -1;
+    int m_top = 0;
 };

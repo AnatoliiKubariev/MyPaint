@@ -27,7 +27,6 @@ private:
     UndoRedoStack& m_commands;
     GraphicsScene& m_scene;
     QPoint m_start;
-    QPoint m_end;
     QPen& m_pen;
 
     std::unique_ptr<QGraphicsLineItem> m_graphics_line;
